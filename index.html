@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <title>###</title>
+        <!-- font awesome -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<!-- bootstrap -->
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- css file -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body{
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        .wrapper{
+           position: relative;
+           width: 100vw;
+           height: 100vh;
+        }
+        [hidden] {
+            display: block !important;
+        }
+        #text{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #text h1{
+            color: #fff;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 55px;
+            display: block;
+            font-style: italic;
+            position: relative;
+            text-shadow: 0 0 10px #00fff2, 0 0 20px #00fff2, 0 0 30px #00fff2, 0 0 40px #00fff2, 0 0 50px #00fff2;
+            text-align: center;
+            
+        }
+        #first{
+            /* overflow: hidden; */
+           display: block;
+      
+        }
+        #first span{
+            width: 100%;
+            color: #fff;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 55px;
+            display: none;
+            font-style: italic;
+            position: relative;
+            padding:20px 50px;
+            margin: 10px;
+            text-shadow: 0 0 10px #00fff2, 0 0 20px #00fff2, 0 0 30px #00fff2, 0 0 40px #00fff2, 0 0 50px #00fff2;
+            animation:first ease-in-out 0.5s  alternate;
+        }
+        #first span.text-in{
+            display: block;
+        }
+        
+        @keyframes first{
+            0%{
+                /* opacity: 1; */
+
+                color: lightgrey;
+                text-shadow:0 0 10px #00fff2, 0 0 20px #00fff2, 0 0 30px #00fff2, 0 0 40px #00fff2, 0 1 50px #00fff2;
+               transform: translateY(100%);
+            }
+            100%{
+                color:#fff;
+                text-shadow: 0 0 10px #00fff2, 0 0 20px #00fff2, 0 0 30px #00fff2, 0 0 40px #00fff2, 0 0 50px #00fff2;
+            
+                transform: translateY(0%);
+                /* opacity: 0; */
+                /* display: none; */
+               
+            }
+        }
+        
+        
+        }
+    </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="in-wrapper">
+                <div id="text">
+                    <embed name="GoodEnough" src="./media/song.mp3" loop="true" hidden="true" autostart="true">
+                    <h1>Darling!!</h1>
+                    <p id="first">
+                        <span>Happy Birthday !</span>
+                        <span>Stay Happy...</span>
+                        <span>Your all dreams come true...</span>
+                        <span>May god bless you...</span>
+                        <span>Love you...</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+        <script>
+            const txts=document.querySelector("#first").children,
+                txtsLen=txts.length;
+            let index=0;
+            const textInTimer=3000,
+                textOutTimer=2800;
+            function first(){
+                for(let i=0; i<txtsLen; i++){
+                    txts[i].classList.remove("text-in");
+                }
+                txts[index].classList.add("text-in");
+                if(index==txtsLen-1){
+                    index=0;
+                }else{
+                    index++;
+                }
+                setTimeout(first,3000);
+
+            }  
+            window.onload=first;  
+        </script>
+    </body>
+</html>
